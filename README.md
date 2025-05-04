@@ -41,15 +41,20 @@ git clone <repository-url>
 cd <repository-directory>
 
 
-2. Set Up Python Virtual EnvironmentCreate and activate a virtual environment to isolate project dependencies:python -m venv venv
+2. Set Up Python Virtual Environment
+Create and activate a virtual environment to isolate project dependencies:
+
+**python -m venv venv**
 # Activate the environment
 # Windows:
-venv\Scripts\activate
+**venv\Scripts\activate**
 # macOS/Linux:
-source venv/bin/activate
+**source venv/bin/activate**
 
 
-3. Install Required Python LibrariesInstall the necessary Python packages using pip:pip install -r requirements.txt
+3. Install Required Python Libraries
+Install the necessary Python packages using pip:
+**pip install -r requirements.txt**
 (If you haven't already, you can generate this file using pip freeze > requirements.txt)
 
 
