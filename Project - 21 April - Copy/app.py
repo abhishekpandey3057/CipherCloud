@@ -14,8 +14,8 @@ bcrypt = Bcrypt(app)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'abhishekpandey3057@gmail.com'
-app.config['MAIL_PASSWORD'] = 'roiy dyhm zvms fqen'
+app.config['MAIL_USERNAME'] = 'Enter Your E-mail here' # John@gmail.com
+app.config['MAIL_PASSWORD'] = 'Enter generated Password Here' #aaaa bbbb cccc dddd
 mail = Mail(app)
 
 # Upload settings
