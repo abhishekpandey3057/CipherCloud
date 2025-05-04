@@ -58,23 +58,35 @@ Install the necessary Python packages using pip:
 (If you haven't already, you can generate this file using pip freeze > requirements.txt)
 
 
-4. Configure AWS CLIConfigure your AWS credentials using the AWS CLI:aws configure
+4. Configure AWS CLI
+Configure your AWS credentials using the AWS CLI:
+**aws configure**
 You will be prompted to enter your Access Key ID, Secret Access Key, default region (ap-south-1), and output format (you can leave the output format blank).
 
 
-5. Create AWS ResourcesS3 Bucket: Create an S3 bucket named secure-file-storage-bucket in the ap-south-1 region. Enable AES256 encryption for the bucket.DynamoDB Table: Create a DynamoDB table named FileMetadata with file_id (String) as the primary key.
+5. Create AWS Resources
+S3 Bucket:
+Create an S3 bucket named secure-file-storage-bucket in the ap-south-1 region. Enable AES256 encryption for the bucket.
+DynamoDB Table: Create a DynamoDB table named FileMetadata with file_id (String) as the primary key.
 
 
-6. Set Up Gmail App PasswordEnable 2-Step Verification for your Gmail account.Go to https://myaccount.google.com/apppasswords and generate an app password for "Mail".Update the following lines in app.py with your Gmail address and the generated app password:app.config['MAIL_USERNAME'] = 'your-email@gmail.com'
-app.config['MAIL_PASSWORD'] = 'your-app-password'
+6. Set Up Gmail App Password
+Enable 2-Step Verification for your Gmail account.
+Go to https://myaccount.google.com/apppasswords and generate an app password for "Mail".
+Update the following lines in app.py with your Gmail address and the generated app password:
+**app.config['MAIL_USERNAME'] = 'your-email@gmail.com'**
+**app.config['MAIL_PASSWORD'] = 'your-app-password'**
 
 
-7. Generate RSA Key PairCreate a keys/ directory and generate the RSA private and public keys:mkdir keys
-openssl genrsa -aes256 -out keys/recipient_private.pem 2048
-# Enter a strong passphrase when prompted (e.g., abhi@3057)
-openssl rsa -in keys/recipient_private.pem -pubout -out keys/recipient_public.pem
+7. Generate RSA Key Pair
+Create a keys/ directory and generate the RSA private and public keys:mkdir keys
+**openssl genrsa -aes256 -out keys/recipient_private.pem 2048**
+# Enter a strong passphrase when prompted (e.g., Test@123)
+**openssl rsa -in keys/recipient_private.pem -pubout -out keys/recipient_public.pem**
 
-Running the ApplicationTo start the Flask development server:python app.py
+Running the Application
+To start the Flask development server:
+**python app.py**
 
 Visit http://127.0.0.1:5000 in your web browser to access the application.
 
