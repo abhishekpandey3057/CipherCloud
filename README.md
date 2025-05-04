@@ -84,7 +84,7 @@ Update the following lines in app.py with your Gmail address and the generated a
 ``app.config['MAIL_PASSWORD'] = 'your-app-password'``
 
 
-### 7. Generate RSA Key Pair
+### 7. Generate RSA Key Pair - ( Delete the keys from the /keys folder and generate new one )
 
 Create a keys/ directory and generate the RSA private and public keys:
 ``mkdir keys``
