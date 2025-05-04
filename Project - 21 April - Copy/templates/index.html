@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome - Secure Cloud File Storage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    /* Enhanced Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f4f7f6; /* Light background */
+      color: #333; /* Dark text */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .dark-mode {
+      background-color: #1a1a1a; /* Dark background */
+      color: #eee; /* Light text */
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+    }
+
+    .dark-mode .container {
+      background-color: #2c3e50; /* Dark container */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      color: #2c3e50; /* Primary color */
+      margin-bottom: 15px;
+    }
+
+    .dark-mode h1 {
+      color: #87ceeb; /* Accent color in dark mode */
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .dark-mode p {
+      color: #ccc;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 24px;
+      text-decoration: none;
+      color: #fff;
+      background-color: #3498db; /* Call-to-action color */
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #2980b9;
+    }
+
+    .dark-mode .button {
+      background-color: #34495e;
+    }
+
+    .dark-mode .button:hover {
+      background-color: #2c3e50;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto 20px;
+      width: 80px;
+      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+    }
+
+    .dark-mode img {
+      filter: drop-shadow(2px 2px 4px rgba(255, 255, 255, 0.1));
+    }
+  </style>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</head>
+<body>
+  <div class="container home">
+    <img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png" alt="Cloud Logo">
+    <h1>Secure Cloud File Storage System</h1>
+    <p>Upload, Encrypt, and Share Files Securely Using AES and RSA Encryption.</p>
+    <div class="cta-buttons">
+      <a href="{{ url_for('signup') }}" class="button primary">Sign Up</a>
+      <a href="{{ url_for('login') }}" class="button secondary">Login</a>
+    </div>
+    <button onclick="toggleDarkMode()" class="button toggle">Toggle Dark Mode</button>
+  </div>
+</body>
+</html>

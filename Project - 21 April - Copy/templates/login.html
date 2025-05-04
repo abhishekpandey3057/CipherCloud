@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    /* Enhanced Styles for Login Page */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f4f7f6; /* Light background */
+      color: #333; /* Dark text */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .dark-mode {
+      background-color: #1a1a1a; /* Dark background */
+      color: #eee; /* Light text */
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .dark-mode .container {
+      background-color: #2c3e50; /* Dark container */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      color: #2c3e50; /* Primary color */
+      margin-bottom: 25px;
+    }
+
+    .dark-mode h2 {
+      color: #87ceeb; /* Accent color in dark mode */
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      text-align: left;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .dark-mode label {
+      color: #ccc;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1em;
+      color: #333;
+    }
+
+    .dark-mode input[type="email"],
+    .dark-mode input[type="password"] {
+      background-color: #34495e;
+      color: #eee;
+      border-color: #555;
+    }
+
+    .button {
+      padding: 12px 24px;
+      background-color: #3498db; /* Call-to-action color */
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #2980b9;
+    }
+
+    .dark-mode .button {
+      background-color: #34495e;
+    }
+
+    .dark-mode .button:hover {
+      background-color: #2c3e50;
+    }
+
+    .flash-messages {
+      list-style: none;
+      padding: 15px;
+      margin-top: 20px;
+      background-color: #fdecea;
+      color: #c0392b;
+      border-radius: 6px;
+      border: 1px solid #e74c3c;
+      text-align: left;
+    }
+
+    .dark-mode .flash-messages {
+      background-color: #4a235a;
+      color: #f39c12;
+      border-color: #9b59b6;
+    }
+
+    .dark-mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .dark-mode-toggle input[type="checkbox"] {
+      height: 0;
+      width: 0;
+      visibility: hidden;
+    }
+
+    .dark-mode-toggle label {
+      width: 40px;
+      height: 20px;
+      background: #ccc;
+      display: block;
+      border-radius: 100px;
+      position: relative;
+      transition: background-color 0.3s ease;
+    }
+
+    .dark-mode-toggle label:after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      border-radius: 90px;
+      transition: 0.3s;
+    }
+
+    .dark-mode-toggle input:checked + label {
+      background: #34495e;
+    }
+
+    .dark-mode-toggle input:checked + label:after {
+      left: calc(100% - 2px);
+      transform: translateX(-100%);
+    }
+
+    .dark-mode-toggle label:active:after {
+      width: 20px;
+    }
+  </style>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      document.getElementById('darkModeSwitch').checked = isDarkMode;
+      // Store the theme preference in local storage for persistence
+      localStorage.setItem('darkMode', isDarkMode);
+    }
+
+    // Check for stored theme preference on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const storedDarkMode = localStorage.getItem('darkMode');
+      if (storedDarkMode === 'true') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('darkModeSwitch').checked = true;
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="dark-mode-toggle">
+    <input type="checkbox" id="darkModeSwitch" onchange="toggleDarkMode()">
+    <label for="darkModeSwitch"></label>
+  </div>
+
+  <div class="container">
+    <h2>Login</h2>
+    <form method="POST">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <br>
+      <button type="submit" class="button">Login</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>
