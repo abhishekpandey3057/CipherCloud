@@ -1,9 +1,9 @@
 import boto3
 import os
 
-AWS_REGION = "ap-south-1"
-S3_BUCKET = "secure-file-storage-bucket-1"
-DYNAMODB_TABLE = "FileMetadata"
+AWS_REGION = "ap-south-1"   # Enter Aws Region Here
+S3_BUCKET = "secure-file-storage-bucket-1"   # Enter S3 bucket name here 
+DYNAMODB_TABLE = "FileMetadata"   # Enter Dynamo Table Name here
 
 s3 = boto3.client('s3', region_name=AWS_REGION)
 dynamodb = boto3.resource('dynamodb', region_name=AWS_REGION)
